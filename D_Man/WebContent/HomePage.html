@@ -11,13 +11,23 @@
 <body>
 <h1>Data Management</h1>
 <div ng-controller="salesDetailsController">
-<ul id="navlist">
-  <li><a  class="{{styleClassH}}" href="#" ng-click="showHome()">Home</a></li>
-  <li><a class="{{styleClassP}}" href="#" ng-click="showPurchaseOrder()">Purchase Order</a></li>
+<nav>
+<ul>
+  <li class="dropdown"><a class="{{styleClassH}}" href="#" ng-click="showHome()">Home</a></li>
+  <li class="dropdown"><a class="{{styleClassMat}}" href="#" ng-click="showMatMan()" class="dropbtn">Material Management &raquo;</a>
+	  <div class="dropdown-content">
+			<a href="#">Enquiry</a>
+			<a href="#">Quotation</a>
+			<a href="#" ng-click="showPurchaseOrder()">Purchase Order</a>
+			<a href="#">Inward Delivery Challan</a>
+			<a href="#">Item Master</a>
+	 </div>
+  </li>
   <li><a class="{{styleClassQ}}" href="#" ng-click="showQuotation()">Quotation</a></li>
   <li><a class="{{styleClassI}}" href="#" ng-click="showInventory()">Inventory</a></li>
   <li><a class="{{styleClassS}}" href="#" ng-click="showSales()">Sales</a></li>
 </ul>
+</nav>
 <div align="center" ng-show="isHome">
 <p><b>Welcome to Data Management</b></p>
 <p><b> Easy way to add purchase order, Quotation, Inventory Details and Sales details</b></p>
