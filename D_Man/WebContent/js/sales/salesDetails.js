@@ -31,6 +31,7 @@ salesApp.controller(
 						$scope.isPurchase = "";
 						$scope.styleClassQ = "";
 						$scope.isQuotation = "";
+						$scope.isEnquiry = "";
 						$scope.styleClassI = "";
 						$scope.isInventory = "";
 						$scope.styleClassS = "";
@@ -53,6 +54,11 @@ salesApp.controller(
 						clear();
 						$scope.styleClassQ="active";
 						$scope.isQuotation = true;
+					}
+					$scope.showEnquiry = function() {
+						clear();
+						$scope.styleClassQ="active";
+						$scope.isEnquiry = true;
 					}
 					$scope.showInventory = function() {
 						clear();
