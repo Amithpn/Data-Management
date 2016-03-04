@@ -56,6 +56,8 @@ salesApp.controller(
 						$scope.enableEdit = false;
 						$scope.searchResList = [];
 						$scope.checked='';
+						$scope.isVendor = false;
+						$scope.addNewVendor = false;
 					}
 					$scope.showHome = function() {
 						clear();
