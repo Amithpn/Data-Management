@@ -14,14 +14,14 @@
 <nav>
 <ul>
   <li class="dropdown"><a class="{{styleClassH}}" href="#" ng-click="showHome()">Home</a></li>
-  <li class="dropdown"><a class="{{styleClassMat}}" href="#" ng-click="showMatMan()" class="dropbtn">Material Management &raquo;</a>
+  <li class="dropdown"><a href="#" class="dropbtn">Material Management &raquo;</a>
 	  <div class="dropdown-content">
 			<a href="#" ng-click="showEnquiry()">Enquiry</a>
 			<a href="#" ng-click="showQuotation()">Quotation</a>
 			<a href="#" ng-click="showPurchaseOrder()">Purchase Order</a>
-			<a href="#">Inward Delivery Challan</a>
-			<a href="#">Item Master</a>
-			<a href="#">Vendors/Suppliers</a>
+			<a href="#" ng-click="showIDC()">Inward Delivery Challan</a>
+			<a href="#" ng-click="showItemMaster()">Item Master</a>
+			<a href="#" ng-click="showVendors()">Vendors</a>
 	 </div>
   </li>
 <!--   <li><a class="{{styleClassQ}}" href="#" ng-click="showQuotation()">Quotation</a></li>--> 
@@ -37,7 +37,7 @@
 <br>
 <center><h2>Purchase Order</h2></center>
 <form method="get" name="purchaseForm">
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 
 <tr><td>
 <h3>Vendor Details:</h3>
@@ -116,7 +116,7 @@
 <br>
 <center><h2>Quotation Form</h2></center>
 <form method="get" name="quotationForm">
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 
 <tr><td>
 <h3>Vendor Details:</h3>
@@ -194,7 +194,7 @@
 <br>
 <center><h2>Enquiry Form</h2></center>
 <form method="get" name="quotationForm">
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 
 <tr><td>
 <h3>Vendor Details:</h3>
@@ -272,7 +272,7 @@
 <div ng-show="isInventory">
 <br>
 <h2 align="center">Inventory</h2>
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="90%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 <tr>
 <td align="right" >
 <button type="button" name="existingVendor" ng-click="openInputBox()">Existing Vendor</button>
@@ -320,7 +320,7 @@
 </table>
 
 <form method="get" name="quotationForm" ng-show="addVendor">
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 
 <tr><td>
 <h3>Vendor Details:</h3>
@@ -399,7 +399,7 @@
 <br>
 <center><h2>Sales</h2></center>
 <form method="get" name="salesForm">
-<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
 
 <tr><td align="right">
 <h3>Sales Details</h3>
@@ -453,6 +453,290 @@
 </table>
 </form>
 </div>
+
+<div ng-show="isIDC">
+<br>
+<center><h2>Inward Delivery Challan</h2></center>
+<form method="get" name="inwardDCForm">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="45%">
+<tr><td class="input-list style-2 clearfix">
+<label>Quotation Id:</label> <input type="text" name="quotationId" value=""></td>
+<td class="input-list style-2 clearfix">
+<label>Vendor Id:</label> <input type="text" name="vendor" value=""></td>
+<td class="input-list style-2 clearfix">
+<label>Vendor Name: </label><input type="text" name="vendorName" ></td>
+</tr>
+</table>
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="95%">
+<tr><td align="right">
+<h3>Items Received Details</h3>
+</td>
+<td><button type="button" type="button" ng-click="addIDC()">+</button></td>
+</tr>
+
+<tr>
+<table cellspacing="1"  width="90%" align="center" ng-repeat="challan in InwardDCList" ng-show="InwardDC" >
+				<tr>
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Id: </label>
+				<input type="text" name="itemName" ng-model="challan.itemId">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Name: </label>
+				<input type="text" name="itemName" ng-model="challan.itemName">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Quantity: </label>
+				<input type="text" name="itemName" ng-model="challan.quantity">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Unit Price: </label>
+				<input type="text" name="itemName" ng-model="challan.unitPrice">
+				</td>
+
+				<td class="input-list style-2 clearfix">
+				<label>Total Amount: </label>
+				<input type="text" name="price" ng-model="challan.totalAmt">
+				</td>
+				</tr>
+		
+</table>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td>
+<table style="table-layout: fixed" align ="right" cellpadding="5" border="0" cellspacing="0" width="50%">
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+		<tr>
+<td ><button type="button" type="button" >Submit</button></td></td>
+</tr>
+</table>
+</table>
+</form>
+</div>
+
+<div ng-show="isItemMaster">
+<br>
+<center><h2>Item Master</h2></center>
+<form method="get" name="itemMasterForm">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="25%">
+<tr><td><input type="radio" id="search" ng-model="checked" value="search"  ng-click="showSearch('search')">Search Item</td>
+
+<td><input type="radio" id="newItem" ng-model="checked" value="newItem"  ng-click="showNewItem('newItem')">Add New Item</td>
+</tr>
+<tr ng-show="isSearch">
+<td class="input-list style-2 clearfix"><label>Enter Id: </label>
+<input type="text" name="searchId" value="" ng-keypress="showSearchResults()"></td>
+</tr>
+</table>
+<table style="table-layout: fixed" cellpadding="5" border="0" cellspacing="0" width="55%" ng-show="searchRes">
+<tr><td align="right">
+<h3>Items Details</h3>
+</td>
+</tr>
+<tr>
+<table cellspacing="1"  width="90%" align="center" ng-repeat="sRes in searchResList">
+				<tr>
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Id: </label>
+				<input type="text" name="itemName" ng-model="sRes.itemId" ng-disabled="enableEdit">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Name: </label>
+				<input type="text" name="itemName" ng-model="sRes.itemName" ng-disabled="enableEdit">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>No Of Units Left: </label>
+				<input type="text" name="itemName" ng-model="sRes.noOfUnits" ng-disabled="enableEdit">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Unit Price: </label>
+				<input type="text" name="itemName" ng-model="sRes.unitPrice" ng-disabled="enableEdit">
+				</td>
+				<td>
+				<a href="#" ng-click="enableEditF(sRes.itemId)"><img ng-src="images/edit-pencil.gif" ></a></td>
+				</tr>
+		
+</table>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td ng-show="searchRes">
+<table style="table-layout: fixed" align ="right" cellpadding="5" border="0" cellspacing="0" width="50%">
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+		<tr>
+<td ng-show="searchRes"><button type="button" type="button" >Submit</button></td></td>
+</tr>
+</table>
+</table>
+</form>
+
+<form method="get" name="addNewItemForm" ng-show="isAddNewItem">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
+
+<tr><td>
+<h3>Vendor Details:</h3>
+</td>
+</tr>
+<tr><td class="input-list style-2 clearfix">
+<label>Vendor Id:</label> <input type="text" name="vendor" value=""></td>
+<td class="input-list style-2 clearfix">
+<label>Vendor Name: </label><input type="text" name="vendorName" ></td>
+</tr>
+<tr>
+<td class="input-list style-2 clearfix">
+<label>Address: </label> &nbsp;&nbsp;&nbsp;<textarea rows="4" cols="25" name="address"></textarea>
+</td>
+</tr>
+<tr>
+<td align="right">
+<h3>Item Details:</h3>
+</td>
+<td><button type="button" type="button" ng-click="addQuotation()">+</button></td>
+</tr>
+<tr>
+<table cellspacing="1"  width="90%" align="center" ng-repeat="quote in quotationList" ng-show="addNewItem" >
+				<tr>
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Id: </label>
+				<input type="text" name="itemName" ng-model="quote.itemId">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Name: </label>
+				<input type="text" name="itemName" ng-model="quote.itemName">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Description: </label>
+				<input type="text" name="itemName" ng-model="quote.itemDesc">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Unit Price: </label>
+				<input type="text" name="itemName" ng-model="quote.unitPrice">
+				</td>
+				
+				<td class="input-list style-2 clearfix">
+				<label>Quantity: </label>
+				<input type="text" name="quantity" ng-model="quote.quantity">
+				</td>
+				
+				<td class="input-list style-2 clearfix">
+				<label>Total Amount: </label>
+				<input type="text" name="price" ng-model="quote.totalAmt">
+				</td>
+				</tr>
+		
+</table>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td>
+<table style="table-layout: fixed" align="right" cellpadding="5" border="0" cellspacing="0" width="50%">
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+		<tr>
+<td ><button type="button" type="button" >Submit</button></td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<div ng-show="isVendor">
+<br>
+<center><h2>Add New Vendor</h2></center>
+<form method="get" name="vendorForm">
+<table style="table-layout: fixed" align="center" cellpadding="5" border="0" cellspacing="0" width="70%">
+
+<tr><td>
+<h3>Vendor Details:</h3>
+</td>
+</tr>
+<tr><td class="input-list style-2 clearfix">
+<label>Vendor Id:</label> <input type="text" name="vendor" value=""></td>
+<td class="input-list style-2 clearfix">
+<label>Vendor Name: </label><input type="text" name="vendorName" ></td>
+</tr>
+<tr>
+<td class="input-list style-2 clearfix">
+<label>Address: </label> &nbsp;&nbsp;&nbsp;<textarea rows="4" cols="25" name="address"></textarea>
+</td>
+</tr>
+<tr>
+<td align="right">
+<h3>Item Details:</h3>
+</td>
+<td><button type="button" type="button" ng-click="addQuotation()">+</button></td>
+</tr>
+<tr>
+<table cellspacing="1"  width="90%" align="center" ng-repeat="quote in quotationList" ng-show="addNewVendor" >
+				<tr>
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Id: </label>
+				<input type="text" name="itemName" ng-model="quote.itemId">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Name: </label>
+				<input type="text" name="itemName" ng-model="quote.itemName">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Item Description: </label>
+				<input type="text" name="itemName" ng-model="quote.itemDesc">
+				</td>
+				
+				<td class="input-list style-2 clearfix" align="left">
+				<label>Unit Price: </label>
+				<input type="text" name="itemName" ng-model="quote.unitPrice">
+				</td>
+				
+				<td class="input-list style-2 clearfix">
+				<label>Quantity: </label>
+				<input type="text" name="quantity" ng-model="quote.quantity">
+				</td>
+				
+				<td class="input-list style-2 clearfix">
+				<label>Total Amount: </label>
+				<input type="text" name="price" ng-model="quote.totalAmt">
+				</td>
+				</tr>
+		
+</table>
+
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td>
+<table style="table-layout: fixed" align="right" cellpadding="5" border="0" cellspacing="0" width="50%">
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+		<tr>
+<td ><button type="button" type="button" >Submit</button></td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+</div> 
+
 </div>
 </body>
 </html>

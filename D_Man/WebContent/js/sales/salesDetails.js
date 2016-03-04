@@ -8,6 +8,8 @@ salesApp.controller(
 					$scope.quotationList = [];
 					$scope.inventoryList = [];
 					$scope.salesList = [];
+					$scope.InwardDCList = [];
+					$scope.searchResList = [];
 					
 					$scope.styleClassH = "active";
 					$scope.isHome = true;
@@ -24,6 +26,14 @@ salesApp.controller(
 					$scope.styleClassS = "";
 					$scope.isSales = "";
 					
+					$scope.isIDC = "";
+					
+					$scope.isItemMaster = false;
+					
+					$scope.isSearch = false;
+					
+					$scope.enableEdit = true;
+					
 					var clear = function() {
 						$scope.styleClassH = "";
 						$scope.isHome = "";
@@ -31,19 +41,28 @@ salesApp.controller(
 						$scope.isPurchase = "";
 						$scope.styleClassQ = "";
 						$scope.isQuotation = "";
-						$scope.isEnquiry = "";
 						$scope.styleClassI = "";
 						$scope.isInventory = "";
 						$scope.styleClassS = "";
 						$scope.isSales = "";
+						$scope.isIDC = "";
+						$scope.isEnquiry = "";
+						$scope.isItemMaster = false;
 						$scope.add = false;
 						$scope.addQuote = false;
+						$scope.isSearch = false;
+						$scope.isAddNewItem = false;
+						$scope.searchRes = false;
+						$scope.enableEdit = false;
+						$scope.searchResList = [];
+						$scope.checked='';
 					}
 					$scope.showHome = function() {
 						clear();
 						$scope.styleClassH="active";
 						$scope.isHome = true;
 					}
+					
 					$scope.showPurchaseOrder = function() {
 						clear();
 						$scope.styleClassP="active";
@@ -123,6 +142,58 @@ salesApp.controller(
 							 	TotalAmt: 0
 					  });
 						 
+					}
+					$scope.showIDC = function() {
+						clear();
+						$scope.isIDC = true;
+					}
+					$scope.addIDC = function() {
+						$scope.InwardDC = true;
+						$scope.InwardDCList.push({
+							itemId: '',
+							itemName:'',
+							quantity:0,
+							unitPrice: 0,
+							totalAmt: 0
+						});
+					}
+					
+					$scope.showItemMaster = function() {
+						clear();
+						$scope.isItemMaster = true;
+					}
+					$scope.showSearch = function(value) {
+						$scope.checked=value;
+						$scope.isSearch = true;
+						$scope.isAddNewItem = false;
+					}
+					$scope.showNewItem = function(value) {
+						$scope.checked=value;
+						$scope.isSearch = false;
+						$scope.isAddNewItem = true;
+						$scope.searchRes = false;
+						$scope.enableEdit = false;
+						$scope.searchResList = [];
+						$scope.addNewItem = true;
+					}
+					$scope.showSearchResults = function() {
+						$scope.searchRes = true;
+						$scope.enableEdit = true;
+						$scope.searchResList.push({
+							itemId: '',
+							itemName:'',
+							noOfUnits:0,
+							unitPrice: 0
+							
+						});
+					}
+					$scope.enableEditF = function(itemId) {
+						$scope.enableEdit = false;
+					}
+					$scope.showVendors = function() {
+						clear();
+						$scope.isVendor = true;
+						$scope.addNewVendor = true;
 					}
 					
 				}
